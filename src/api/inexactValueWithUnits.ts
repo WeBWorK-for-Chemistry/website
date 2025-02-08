@@ -1,31 +1,31 @@
 import { IApiItem, IHashItem } from "./interfaces";
+import { contextFlags as inexactValueContextFlags } from "./inexactValue";
 
-export const contextFlags: IHashItem[]=[
+export const contextFlags: IHashItem[] = inexactValueContextFlags.slice().concat([
     {
-        key: "tolerance",
-        type: "number",
+        key: "strictUnits",
+        type: "boolean",
+        default: 1,
+        optional: true,
+        description: "Do not allow units that don't appear in the BetterUnits.pl file.",
+    },
+    {
+        key: "hasChemicals",
+        type: "boolean",
         default: 0,
         optional: true,
-        description: `Tolerance defines how close an InexactValue's value needs to be to another one to be considered equal.
-        Ideally, this would be zero for pure signficant figures calculations.  However, if a student is measuring something 
-        (like a length on a ruler), their last digit will can vary from the programmed answer by a small amount.  This is 
-        when it would be appropriate to set a tolerance of greater than zero.`
+        description: "Indicates units may contain chemical symbols.  Ensure, contextChemical.pl is loaded.",
     },
     {
-        key: "tolType",
-        type: "string",
-        default: "absolute",
+        key: "newUnit",
+        type: "array|hash",
+        default: 0,
         optional: true,
-        description: `("absolute" | "relative") When tolerance is non-zero, this flag determines if the tolerance is absolute or relative.`
+        description: `Add one or more new units to the context.  
+        If a hash, keys must include 'name' and 'conversion' to be used in BetterUnits::add_unit function. 
+        If an array, contains multiple hashes as previously described or an array of strings that represent the same unit in different forms.`,
     },
-    {
-        key: "scientificNotationThreshold",
-        type: "number",
-        default: 6,
-        optional: true,
-        description: `Defines at what magnitude (positive or negative) the software will force scientific notation for string or latex output.` 
-    },
-];
+]);
 
 export const apiItems: IApiItem[] = [
     {
@@ -161,9 +161,9 @@ export const apiItems: IApiItem[] = [
                 examples: [
                     {
                         example: "$val = InexactValue('4.00'); $val->sigFigs();",
-                        description: "Returns 3."
-                    }
-                ]
+                        description: "Returns 3.",
+                    },
+                ],
             },
             {
                 parameters: [
@@ -178,9 +178,9 @@ export const apiItems: IApiItem[] = [
                 examples: [
                     {
                         example: "$val = InexactValue('2.0'); $val->sigFigs(4); $val->string();",
-                        description: "Returns \"2.000\", a value with 4 significant figures."
-                    }
-                ]
+                        description: 'Returns "2.000", a value with 4 significant figures.',
+                    },
+                ],
             },
         ],
     },
@@ -836,7 +836,7 @@ export const apiItems: IApiItem[] = [
                                 type: "string",
                                 optional: true,
                                 description: "'quadrature' is the default method for calculating uncertainty.  Currently, no other methods are supported.",
-                            }
+                            },
                         ],
                         optional: true,
                         description: "Options for the method.",
@@ -878,7 +878,7 @@ export const apiItems: IApiItem[] = [
                                 type: "string",
                                 optional: true,
                                 description: "'quadrature' is the default method for calculating uncertainty.  Currently, no other methods are supported.",
-                            }
+                            },
                         ],
                         optional: true,
                         description: "Options for the method.",
@@ -887,5 +887,5 @@ export const apiItems: IApiItem[] = [
                 returns: "number",
             },
         ],
-    }
+    },
 ];

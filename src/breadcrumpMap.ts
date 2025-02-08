@@ -1,3 +1,6 @@
 export const breadcrumbNameMap: { [key: string]: string } = {
-    "/inexactValue": "Inexact Value",
+    "/significantFigures": "Significant Figures",
+    "/uncertaintyPropagation": "Uncertainty Propagation",
+    "/inexactValue": "InexactValue",
+    "/inexactValueWithUnits": "InexactValueWithUnits",
 };

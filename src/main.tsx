@@ -8,6 +8,7 @@ import InexactValue from "./routes/InexactValue.tsx";
 import Home from "./routes/Home.tsx";
 import UncertaintyPropagation from "./routes/UncertaintyPropagation.tsx";
 import SignficantFigures from "./routes/SignficantFigures.tsx";
+import InexactValueWithUnits from "./routes/InexactValueWithUnits.tsx";
 
 const router = createBrowserRouter([
     {
@@ -32,7 +33,7 @@ const router = createBrowserRouter([
       },
             {
                 path: "inexactValueWithUnits",
-                element: <InexactValue />,
+                element: <InexactValueWithUnits />,
             },
         ],
     },

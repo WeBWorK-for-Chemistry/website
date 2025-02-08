@@ -26,8 +26,8 @@ function App() {
             { name: "Significant Figures", route: "significantFigures", icon: <Home />, section: 0 },
             { name: "Uncertainty Propagation", route: "uncertaintyPropagation", icon: <Home />, section: 0 },
 
-            { name: "Inexact Value", route: "inexactValue", icon: <Home />, section: 1 },
-            { name: "Inexact Value with Units", route: "inexactValueWithUnits", icon: <Home />, section: 1 },
+            { name: "InexactValue", route: "inexactValue", icon: <Home />, section: 1 },
+            { name: "InexactValueWithUnits", route: "inexactValueWithUnits", icon: <Home />, section: 1 },
         ],
         []
     );
