@@ -46,7 +46,7 @@ export const apiItems: IApiItem[] = [
                 description: "Creates a new InexactValue object using signficant figures rules according to the input string.",
                 examples: [
                     {
-                        example: 'new("1.2300")',
+                        example: 'InexactValue("1.2300")',
                         description: "Creates a new InexactValue object with a value of 1.2300 and 5 significant figures.",
                     },
                 ],
@@ -63,7 +63,7 @@ export const apiItems: IApiItem[] = [
                 description: "Creates a new InexactValue object using a simple value and a literal number of significant figures.",
                 examples: [
                     {
-                        example: "new([1.23, 5])",
+                        example: "InexactValue([1.23, 5])",
                         description: "Creates a new InexactValue object with a value of 1.2300 and 5 significant figures.",
                     },
                 ],

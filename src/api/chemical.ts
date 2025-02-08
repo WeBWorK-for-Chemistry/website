@@ -1,73 +1,54 @@
 import { IApiItem, IHashItem } from "./interfaces";
-import { contextFlags as inexactValueContextFlags } from "./inexactValue";
 
-export const contextFlags: IHashItem[] = inexactValueContextFlags.slice().concat([
+export const contextFlags: IHashItem[]=[
     {
-        key: "strictUnits",
-        type: "boolean",
-        default: 1,
-        optional: true,
-        description: "Do not allow units that don't appear in the BetterUnits.pl file.",
-    },
-    {
-        key: "hasChemicals",
+        key: "requireFormula",
         type: "boolean",
         default: 0,
         optional: true,
-        description: "Indicates units may contain chemical symbols.  Ensure, contextChemical.pl is loaded.",
+        description: `Needed for an answer checker to require a formula ONLY as an answer.  Otherwise, either are fine.  Cannot set both this and requireName to 1.`
     },
     {
-        key: "newUnit",
-        type: "array|hash",
+        key: "requireName",
+        type: "boolean",
         default: 0,
         optional: true,
-        description: `Add one or more new units to the context.  
-        If a hash, keys must include 'name' and 'conversion' to be used in BetterUnits::add_unit function. 
-        If an array, contains multiple hashes as previously described or an array of strings that represent the same unit in different forms.`,
-    },
-]);
+        description: `Needed for an answer checker to require a name ONLY as an answer.  Otherwise, either are fine.  Cannot set both this and requireFormula to 1.`
+    }
+];
 
 export const apiItems: IApiItem[] = [
     {
         type: "static",
         name: "constructor",
         access: "public",
-        description: "Creates a new InexactValue object.",
+        description: "Creates a new Chemical object.",
         overloads: [
             {
                 parameters: [
                     {
                         name: "value",
                         type: "string",
-                        description: "The string literal of the inexact value.",
+                        description: "The string representation of the formula or name of an element or compound. Name translation limited to binary compounds.",
                     },
                 ],
-                returns: "InexactValue",
-                description: "Creates a new InexactValue object using signficant figures rules according to the input string.",
+                returns: "Chemical",
+                description: "Creates a new Chemical object according to the input string.",
                 examples: [
                     {
-                        example: 'InexactValueWithUnits("1.2300")',
-                        description: "Creates a new InexactValue object with a value of 1.2300 and 5 significant figures.",
+                        example: 'Chemical("C_6H_{12}O_6")',
+                        description: "Creates a new Chemical object that has 6 carbons, 12 hydrogens, and 6 oxygens all neutral charged.",
                     },
-                ],
-            },
-            {
-                parameters: [
                     {
-                        name: "value, signficiant figures",
-                        type: "array",
-                        description: "First item is the value of the inexact value.  Trailing zeros are ignored by the software. Second value is the total number of significant figures the value should have.",
+                        example: 'Chemical("Ca(NO3)_2")',
+                        description: "Creates a new Chemical object that has 1 calcium ion and 2 nitrate ions and is named calcium nitrate.",
                     },
-                ],
-                returns: "InexactValue",
-                description: "Creates a new InexactValue object using a simple value and a literal number of significant figures.",
-                examples: [
                     {
-                        example: "InexactValueWithUnits([1.23, 5])",
-                        description: "Creates a new InexactValue object with a value of 1.2300 and 5 significant figures.",
+                        example: 'Chemical("iron (III) chloride")',
+                        description: "Creates a new Chemical object that has 1 iron 3+ ion and 3 chloride ions.",
                     },
                 ],
-            },
+            }
         ],
     },
     {
@@ -161,9 +142,9 @@ export const apiItems: IApiItem[] = [
                 examples: [
                     {
                         example: "$val = InexactValue('4.00'); $val->sigFigs();",
-                        description: "Returns 3.",
-                    },
-                ],
+                        description: "Returns 3."
+                    }
+                ]
             },
             {
                 parameters: [
@@ -178,9 +159,9 @@ export const apiItems: IApiItem[] = [
                 examples: [
                     {
                         example: "$val = InexactValue('2.0'); $val->sigFigs(4); $val->string();",
-                        description: 'Returns "2.000", a value with 4 significant figures.',
-                    },
-                ],
+                        description: "Returns \"2.000\", a value with 4 significant figures."
+                    }
+                ]
             },
         ],
     },
@@ -836,7 +817,7 @@ export const apiItems: IApiItem[] = [
                                 type: "string",
                                 optional: true,
                                 description: "'quadrature' is the default method for calculating uncertainty.  Currently, no other methods are supported.",
-                            },
+                            }
                         ],
                         optional: true,
                         description: "Options for the method.",
@@ -878,7 +859,7 @@ export const apiItems: IApiItem[] = [
                                 type: "string",
                                 optional: true,
                                 description: "'quadrature' is the default method for calculating uncertainty.  Currently, no other methods are supported.",
-                            },
+                            }
                         ],
                         optional: true,
                         description: "Options for the method.",
@@ -887,5 +868,5 @@ export const apiItems: IApiItem[] = [
                 returns: "number",
             },
         ],
-    },
+    }
 ];

@@ -1,29 +1,10 @@
-import { accordionClassNames, Button, List, ListItem, Text, Tooltip } from "@fluentui/react-components";
-import { useState } from "react";
 import { apiItems, contextFlags } from "../api/inexactValueWithUnits";
-import MethodListItem from "../api/MethodListItem";
-import ContextFlagListItem from "../api/ContextFlagListItem";
+import ClassDetails from "../api/ClassDetails";
 
 function InexactValueWithUnits() {
-    const api = apiItems;
-
     return (
         <>
-            <h2>API</h2>
-            <h3>Context Flags</h3>
-            <List>
-                {contextFlags.map((item) => (
-                    <ContextFlagListItem item={item} />
-                ))}
-            </List>
-            <h3>Public Methods</h3>
-            <List>
-                {api
-                    .filter((x) => x.access === "public" && x.type === "method")
-                    .map((item) => (
-                        <MethodListItem item={item} />
-                    ))}
-            </List>
+            <ClassDetails api={apiItems} contextFlags={contextFlags} description="The InexactValueWithUnits macro provides a way to track significant figures in values along with units." macrosRequired={["contextInexactValueWithUnits.pl", "contextInexactValue.pl"]}></ClassDetails>
         </>
     );
 }

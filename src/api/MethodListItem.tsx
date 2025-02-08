@@ -1,8 +1,9 @@
-import { accordionClassNames, Button, List, ListItem, Text, Tooltip } from "@fluentui/react-components";
+import { ListItem, Text } from "@fluentui/react-components";
 import { IApiItem } from "./interfaces";
 
 interface IMethodListItem {
     item: IApiItem;
+    isConstructor?: boolean;
 }
 
 function MethodListItem({item}:IMethodListItem) {
