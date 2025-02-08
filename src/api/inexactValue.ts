@@ -183,6 +183,12 @@ export const apiItems: IApiItem[] = [
                 ],
                 returns: "number",
                 description: "Sets the number of significant figures in the InexactValue object.",
+                examples: [
+                    {
+                        example: "$val = InexactValue('2.0'); $val->sigFigs(4); $val->string();",
+                        description: "Returns \"2.000\", a value with 4 significant figures."
+                    }
+                ]
             },
         ],
     },
