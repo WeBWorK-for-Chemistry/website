@@ -32,22 +32,22 @@ export const apiItems: IApiItem[] = [
         type: "static",
         name: "constructor",
         access: "public",
-        description: "Creates a new InexactValue object.",
+        description: "Creates a new InexactValueWithUnits object.",
         overloads: [
             {
                 parameters: [
                     {
                         name: "value",
                         type: "string",
-                        description: "The string literal of the inexact value.",
+                        description: "The string literal of the inexact value with units.",
                     },
                 ],
-                returns: "InexactValue",
-                description: "Creates a new InexactValue object using signficant figures rules according to the input string.",
+                returns: "InexactValueWithUnits",
+                description: "Creates a new InexactValueWithUnits object using signficant figures rules according to the input string.",
                 examples: [
                     {
-                        example: 'InexactValueWithUnits("1.2300")',
-                        description: "Creates a new InexactValue object with a value of 1.2300 and 5 significant figures.",
+                        example: 'InexactValueWithUnits("1.2300 g/mL")',
+                        description: "Creates a new InexactValueWithUnits object with a value of 1.2300 and 5 significant figures and units of g/mL.",
                     },
                 ],
             },
@@ -58,13 +58,18 @@ export const apiItems: IApiItem[] = [
                         type: "array",
                         description: "First item is the value of the inexact value.  Trailing zeros are ignored by the software. Second value is the total number of significant figures the value should have.",
                     },
+                    {
+                        name: "value, signficiant figures",
+                        type: "array",
+                        description: "First item is the value of the inexact value.  Trailing zeros are ignored by the software. Second value is the total number of significant figures the value should have.",
+                    }
                 ],
-                returns: "InexactValue",
-                description: "Creates a new InexactValue object using a simple value and a literal number of significant figures.",
+                returns: "InexactValueWithUnits",
+                description: "Creates a new InexactValueWithUnits object using a simple value and a literal number of significant figures with units.",
                 examples: [
                     {
-                        example: "InexactValueWithUnits([1.23, 5])",
-                        description: "Creates a new InexactValue object with a value of 1.2300 and 5 significant figures.",
+                        example: "InexactValueWithUnits([1.23, 5], 'mL')",
+                        description: "Creates a new InexactValueWithUnits object with a value of 1.2300 and 5 significant figures and units of mL.",
                     },
                 ],
             },

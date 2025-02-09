@@ -10,6 +10,7 @@ import UncertaintyPropagation from "./routes/UncertaintyPropagation.tsx";
 import SignficantFigures from "./routes/SignficantFigures.tsx";
 import InexactValueWithUnits from "./routes/InexactValueWithUnits.tsx";
 import Chemical from "./routes/Chemical.tsx";
+import DimensionalAnalysis from "./routes/DimensionalAnalysis.tsx";
 
 const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
               path: "chemical",
               element: <Chemical />,
           },
+          {
+            path: "dimensionalAnalysis",
+            element: <DimensionalAnalysis />,
+        },
         ],
     },
 ]);

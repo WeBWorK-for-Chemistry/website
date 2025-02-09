@@ -41,10 +41,9 @@ function MethodListItem({item}:IMethodListItem) {
                                 {overload.examples && overload.examples.length > 0 && <Text>Examples:</Text>}
                                 {overload.examples?.map((example) => (
                                     <div style={{ marginLeft: 20 }}>
-                                        <code>{example.example}</code>
-                                        <br />
-                                        <i>{example.description}</i>
-                                        <br />
+                                        <div style={{padding: 10, backgroundColor:'#111', color:'#eee'}}><code>{example.example}</code></div>
+                                        <Text>{example.description}</Text>
+                                        <br /><br />
                                     </div>
                                 ))}
                             </Text>

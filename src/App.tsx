@@ -29,6 +29,7 @@ function App() {
             { name: "InexactValue", route: "inexactValue", icon: <Home />, section: 1 },
             { name: "InexactValueWithUnits", route: "inexactValueWithUnits", icon: <Home />, section: 1 },
             { name: "Chemical", route: "chemical", icon: <Home />, section: 1 },
+            { name: "DimensionalAnalysis", route: "dimensionalAnalysis", icon: <Home />, section: 1 },
         ],
         []
     );
