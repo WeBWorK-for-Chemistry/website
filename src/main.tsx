@@ -13,9 +13,10 @@ import Chemical from "./routes/Chemical.tsx";
 import DimensionalAnalysis from "./routes/DimensionalAnalysis.tsx";
 
 const router = createBrowserRouter([
-    {
+    {      
         path: "/",
         element: <App />,
+        
         children: [
             {
                 path: "",
@@ -47,7 +48,7 @@ const router = createBrowserRouter([
         },
         ],
     },
-]);
+],{basename: "/website"});
 
 createRoot(document.getElementById("root")!).render(
     <>

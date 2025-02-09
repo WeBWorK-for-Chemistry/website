@@ -16,6 +16,7 @@
     "@fluentui/react-icons": "^2.0.274",
     "@fluentui/react-nav-preview": "^0.11.2",
     "@remix-run/router": "^1.22.0",
+    "gh-pages": "^6.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^7.1.5"

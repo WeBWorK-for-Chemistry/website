@@ -1,9 +1,6 @@
-import { Button, Card, CardHeader } from "@fluentui/react-components"
-import { useState } from "react"
 import LinkRouter from "../LinkRouter"
 
 function SignficantFigures() {
-    const [count, setCount] = useState(0)
   
     return (
       <>

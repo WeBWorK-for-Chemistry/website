@@ -1,5 +1,4 @@
 import { List, Text } from "@fluentui/react-components";
-import { apiItems, contextFlags } from "../api/chemical";
 import MethodListItem from "../api/MethodListItem";
 import ContextFlagListItem from "../api/ContextFlagListItem";
 import { IApiItem, IHashItem } from "./interfaces";
